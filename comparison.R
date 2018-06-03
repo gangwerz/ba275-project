@@ -1,7 +1,12 @@
-nba <- read.csv("nba-2017.csv")
-nfl <- read.csv("nfl-2017.csv")
+nba_raw <- read.csv("nbaData.csv")
+nfl_raw <- read.csv("nflData.csv")
 
-nba_cap <- sort(as.numeric(sub('\\$', '', as.character(nba$Salary))), decreasing = TRUE)
-nfl_cap <- sort(as.numeric(sub('\\$', '', as.character(nfl$Cap.Hit))), decreasing = TRUE)
+nfl <- list(
+	mu = mean(nfl_raw$Salary),
+	sigma = sd(nfl_raw$Salary)
+)
 
-boxplot(data.frame(nfl_cap[1:300], nba_cap[1:300]), horizontal = TRUE)
+nba <- list(
+	mu = mean(nba_raw$Salary),
+	sigma = sd(nba_raw$Salary)
+)
